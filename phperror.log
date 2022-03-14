@@ -1,0 +1,22 @@
+[14-Mar-2022 18:26:24 Europe/Berlin] PHP Warning:  include(Template.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\index.php on line 18
+[14-Mar-2022 18:26:24 Europe/Berlin] PHP Warning:  include(): Failed opening 'Template.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\index.php on line 18
+[14-Mar-2022 18:26:37 Europe/Berlin] PHP Warning:  include(template.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\index.php on line 18
+[14-Mar-2022 18:26:37 Europe/Berlin] PHP Warning:  include(): Failed opening 'template.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\index.php on line 18
+[14-Mar-2022 18:26:58 Europe/Berlin] PHP Warning:  include(/views/template.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\index.php on line 18
+[14-Mar-2022 18:26:58 Europe/Berlin] PHP Warning:  include(): Failed opening '/views/template.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\index.php on line 18
+[14-Mar-2022 18:27:05 Europe/Berlin] PHP Warning:  include(../views/template.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\index.php on line 18
+[14-Mar-2022 18:27:05 Europe/Berlin] PHP Warning:  include(): Failed opening '../views/template.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\index.php on line 18
+[14-Mar-2022 18:28:01 Europe/Berlin] PHP Warning:  Undefined variable $pageTitle in C:\xampp\htdocs\cvExercice\views\template.php on line 11
+[14-Mar-2022 18:28:01 Europe/Berlin] PHP Warning:  Undefined variable $pageTitle in C:\xampp\htdocs\cvExercice\views\template.php on line 29
+[14-Mar-2022 18:28:01 Europe/Berlin] PHP Warning:  Undefined variable $pageContent in C:\xampp\htdocs\cvExercice\views\template.php on line 32
+[14-Mar-2022 18:29:23 Europe/Berlin] PHP Warning:  Undefined variable $pageContent in C:\xampp\htdocs\cvExercice\views\template.php on line 32
+[14-Mar-2022 18:29:45 Europe/Berlin] PHP Warning:  Undefined variable $pageContent in C:\xampp\htdocs\cvExercice\views\template.php on line 28
+[14-Mar-2022 18:30:15 Europe/Berlin] PHP Warning:  Undefined variable $pageContent in C:\xampp\htdocs\cvExercice\views\template.php on line 28
+[14-Mar-2022 18:31:52 Europe/Berlin] PHP Warning:  Undefined variable $pageContent in C:\xampp\htdocs\cvExercice\views\template.php on line 27
+[14-Mar-2022 18:33:24 Europe/Berlin] PHP Warning:  Undefined variable $pageContent in C:\xampp\htdocs\cvExercice\views\template.php on line 27
+[14-Mar-2022 18:33:45 Europe/Berlin] PHP Warning:  Undefined variable $pageContent in C:\xampp\htdocs\cvExercice\views\template.php on line 27
+[14-Mar-2022 18:33:57 Europe/Berlin] PHP Warning:  Undefined variable $pageContent in C:\xampp\htdocs\cvExercice\views\template.php on line 27
+[14-Mar-2022 18:34:21 Europe/Berlin] PHP Warning:  Undefined variable $pageContent in C:\xampp\htdocs\cvExercice\views\template.php on line 27
+[14-Mar-2022 18:34:39 Europe/Berlin] PHP Warning:  Undefined variable $pageContent in C:\xampp\htdocs\cvExercice\views\template.php on line 27
+[14-Mar-2022 21:49:59 Europe/Berlin] PHP Warning:  include(../calls/config.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\views\template.php on line 2
+[14-Mar-2022 21:49:59 Europe/Berlin] PHP Warning:  include(): Failed opening '../calls/config.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\views\template.php on line 2

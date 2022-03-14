@@ -1,0 +1,57 @@
+
+header {padding:25px;}
+
+/* nav bar */
+nav {width:80%;margin:auto;}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f3f3f3;
+  }
+  
+  nav li {float: left;border-right:1px solid #bbb;}
+  nav li:last-child {border-right: none;}
+  
+  nav ul li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  nav li a:hover {color: #666;text-decoration: none;}
+  nav li a:hover:not(.active) {background-color: white;}
+  nav ul li .active {background-color: #008CBA;color:white !important;}
+
+/* body */
+
+main{width:80%;margin:auto; margin-top:25px;}
+
+#title {
+    width:35%;
+    margin:auto; 
+    margin-top:10px; 
+    border-style: outset;
+    border-width: 8px;
+    padding:35px;
+    text-align:center; 
+}
+
+#competences{list-style-type: none;text-indent: -15px;}
+#competences > li:before {content: "- ";}
+
+#formation p{width:50%;}
+#formation div{display:flex;}
+#tableCompetence, th, td{border: 1px solid black;padding:5px;margin-top:10px;}
+#mainDiv{display:flex; justify-content:space-between;}
+
+footer div {width:50%; margin:auto;margin-top:15px;border-top:solid 1px;text-align:center;padding:15px;}
+.description{display:flex; justify-content:space-between}
+.description div{width:50%;}
+
+#experiences ul {list-style-type: none;text-indent: -15px;}
+#experiences ul > li:before {content: "- ";}

@@ -1,152 +1,96 @@
 <?php
-/*****************************************************************************/
-//	Auteur:				Antoine Pierre
-//	Description:		Programme de gestion des jeux vidéos
-//	Date de creation:	Mars 2020
-//	But:				Affichage et MAJ des jeux vidéos
-//
-//  Auteur modif:       Mathieu Lepage
-//	Date de creation:	23 avril 2020
-// 	Modification : 		Adaptation POO pour l'ajout, la modification et la suppression d'un jeu en utilisant 
-//                      la class jeuvideo et le manager associé
-/*****************************************************************************/
-include('calls/config.php');
-include('calls/connexionBD.php');
 
-session_start();
-if(isset($_SESSION['login']))
+//autoload des fichiers à include
+foreach(['calls','class','controller','libs','managers'] as $folder)
 {
-    if(isset($_POST['action']))
+    $scan_arr = scandir($folder);
+    $files_arr = array_diff($scan_arr, array('.','..') );
+    foreach($files_arr as $file)
     {
-        if($_POST['action'] == "A")
-        {
-            // Il y a un jeu à ajouter
-            // Récupérer d'abord les infos du formulaire dans un objet jeuvideo
-            include ('class/jeuvideo.class.php');
-
-            $nomJeu = $_POST['nom'];
-            $genres = $_POST['genres'];
-            $plateformes = $_POST['plateformes'];
-
-            $jeuvideo = new JeuVideo($_POST['nom'], $_POST['description'], $_POST['dateSortie'], $_POST['idEditeur'],$_POST['prix'],$_POST['appreciationMoy'], $_POST['multiJoueur'], $_POST['quantiteEnStock']);
-            include_once('class//managers/mgrJeuVideo.class.php');
-
-            // Appeler le manager afin d'ajouter le jeu dans la BD
-            $mgrJeuVideo = new mgrJeuVideo($db);
-            $reponse = $mgrJeuVideo->ajouterJeuVideo($jeuvideo);
-
-            $idJeu = $mgrJeuVideo->dernierIdInsere();
-
-            foreach($genres as $genre)
-            {
-                $ajoutGenreRequete = $mgrJeuVideo->ajouterGenreJeu($idJeu, $genre);
-                if(!$ajoutGenreRequete)
-                echo "Une erreur s'est produite lors de l'ajout d'un nouveau genre";
-            }
-            foreach($plateformes as $plateforme)
-            {
-                $ajoutPlateformeRequete = $mgrJeuVideo->ajouterPlateformeJeu($idJeu, $plateforme);
-                if(!$ajoutPlateformeRequete)
-                echo "Une erreur s'est produite lors de l'ajout d'une nouvelle plateforme";
-            }
-
-            // Informez l'usager du résultat de l'insertion
-            if ($reponse)
-                echo "Jeu ajouté !";
-            else
-                echo "Erreur lors de l'ajout du jeu";
-        }
-
-        if($_POST['action'] == "M")
-        {
-            // Il y a un jeu à modifier
-            // Récupérer d'abord les infos du formulaire dans un objet jeuvideo
-            $id = (int)$_POST['id'];
-            include ('class/jeuvideo.class.php');
-            $jeuvideo = new JeuVideo($_POST['nom'], $_POST['description'], $_POST['dateSortie'], $_POST['idEditeur'],$_POST['prix'],$_POST['appreciationMoy'], $_POST['multiJoueur'], $_POST['quantiteEnStock']);
-            include_once('class/managers/mgrJeuVideo.class.php');
-            $genres = $_POST['genres'];
-            $plateformes = $_POST['plateformes'];
-            
-            //Modifie le jeu dans la BDD
-            $mgrJeuVideo = new mgrJeuVideo($db);
-            $reponseRequete = $mgrJeuVideo->miseAjourJeuVideo($id, $jeuvideo->getNom(), $jeuvideo->getDescription(), $jeuvideo->getDateSortie(), $jeuvideo->getEditeurId(), $jeuvideo->getPrix(), $jeuvideo->getAppreciationMoy(), $jeuvideo->getMultijoueur(), $jeuvideo->getQuantiteEnStock());
-            $reponseSupprGenres = $mgrJeuVideo->supprimerGenreJeu($id);
-            $reponseSupprPlateformes = $mgrJeuVideo->supprimerPlateformeJeu($id);
-            if (!$reponseSupprGenres || !$reponseSupprPlateformes)
-            {
-                echo "Erreur de suppression des anciens genres et/ou anciennes plateformes du jeu";
-                //exit;
-            }
-            foreach ($genres as $genre)
-            {
-                $requeteAjoutGenre = $mgrJeuVideo->ajouterGenreJeu($id, $genre);
-                if (!$requeteAjoutGenre)
-                {
-                    echo "Erreur lors de l'ajout d'un nouveau genre du jeu";
-                    //exit;
-                }
-            }
-            foreach ($plateformes as $plateforme)
-            {
-                $requeteAjoutPlateforme = $mgrJeuVideo->ajouterPlateformeJeu($id, $plateforme);
-                if (!$requeteAjoutPlateforme)
-                {
-                    echo "Erreur lors de l'ajout d'une nouvelle plateforme du jeu";
-                    //exit;
-                }
-            }
-            if ($reponseRequete)
-                echo "Jeu modifié !";
-            else
-                echo "Erreur lors de la modification du jeu";
-        }
-
-        if($_POST['action'] == "S")
-        {
-            $id = $_POST['id'];
-            //Supprimer l'article dans la BDD
-            include_once("class/managers/mgrJeuVideo.class.php");
-            $mgrJeuVideo = new mgrJeuVideo($db);
-            $requeteSupprimerGenres = $mgrJeuVideo->supprimerGenreJeu($id);
-            $requeteSupprimerPlateformes = $mgrJeuVideo->supprimerPlateformeJeu($id);
-            if ($requeteSupprimerGenres == false || $requeteSupprimerPlateformes == false)
-            {
-                echo "Erreur de suppression des genres et/ou des plateformes du jeu. Le jeu n'a pas pu être supprimé.";
-                exit;
-            }
-            $reponseRequete = $mgrJeuVideo->supprimerJeuVideo($id);
-            if ($reponseRequete)
-                echo "Jeu supprimé !";
-            else
-            {
-                echo "Erreur lors de la suppression du jeu";
-                exit;
-            }
-        }
+        require(__DIR__.'/'.$folder.'/'.$file);
     }
-
-    include_once("class/managers/mgrJeuVideo.class.php");
-    $mgrJeuVideo = new mgrJeuVideo($db);
-    $jeux = $mgrJeuVideo->selectionnerJeuVideo();
-    $pageTitle = "Les Jeux-Vidéos";
-
-    $pageContent = "Connecté en tant que " . $_SESSION['login'] . ". <a href='pages/deconnexion.php'>Se déconnecter</a><br><br>";
-    $pageContent .= "<a href='pages/jeuvideo/ajouterJeuVideo.php'><input type='button' value='Ajouter un jeu-vidéo' class='btn btn-info'></a> <a href='pages/genre/indexGenre.php'><input type='button' value='Gestion des genres' class='btn btn-info'></a> <a href='pages/plateforme/indexPlateforme.php'><input type='button' value='Gestion des plateformes' class='btn btn-info'></a> <a href='pages/editeur/indexEditeur.php'><input type='button' value='Gestion des éditeurs' class='btn btn-info'></a> <br><br>";
-    $pageContent .= "<h2 style='font-size : 20px;'>Liste des jeux-vidéos : </h2><br><br> <table>";
-    foreach ($jeux as $item) 
-    {
-        $pageContent .= "<tr><td><a href='pages/jeuvideo/afficherJeuVideo.php?id=".$item['id']."'>" . $item['nom'] . "</td>";
-        $pageContent .= "<td><a href='pages/jeuvideo/modifierJeuVideo.php?id=".$item['id'].'&nom='.$item['nom'].'&description='.$item['description'].'&dateSortie='.$item['dateSortie'].'&idEditeur='.$item['editeur_id'].'&prix='.$item['prix'].'&appreciationMoy='.$item['appreciationMoy'].'&multiJoueur='.$item['multiJoueur'].'&quantiteEnStock='.$item['quantiteEnStock']."'><input type='button' value='Modifier' class='btn btn-primary'></a></td>";
-        $pageContent .= "<td><a href='pages/jeuvideo/supprimerJeuVideo.php?id=".$item['id'].'&nom='.$item['nom']."'><input type='button' value='Supprimer' class='btn btn-danger'></a></td></tr>";
-    }
-    $pageContent .= "</table> <br> <br>";
-
-    include("Template.php");
 }
-else
-{
-    header("Location: pages/authentification.php");
-    exit;
-}
+require 'vendor/autoload.php';
+$pageTitle = "CURRICULUM VITAE";
+$pageContent = <<<EOT
+<div id="mainDiv">
+    <div>
+        <div>
+            <p id="infosPersos">
+                <strong>Mathieu Lepage</strong><br>
+                790, ave. Myrand, app. 3 <br>Québec (Québec) G1V 2V2 <br><br> Téléphone : (581) 994-8482 (cellulaire) <br><br> Courriel : Mat_182_42@hotmail.com<br>
+                Disponibilités : En tout temps<br><strong>Langues parlées et écrites : Français et anglais</strong><br><br>
+            </p>
+        </div>
+        <div id="formation">
+        <strong>FORMATIONS</strong>
+            <div>
+                <p>Août 2018 - Mai 2021</p>
+                <p>Diplôme d'étude Collégial<br>Informatique - Développement Web<br>Cégep de Rivière-du-Loup</p>
+            </div>
+            <div>
+                <p>Décembre 2015 - Avril 2016</p>
+                <p>Certificat en psychologie<br>(Formation non-complétée)<br>Université TÉLUQ</p>
+            </div>
+            <div>
+                <p>Septembre 2012 - Juillet 2013</p>
+                <p>Attestation d'étude collégiales<br>(Formation non complétée)<br>Informatique - Architecture et gestion de réseaux<br>Cégep de l'Outaouais</p>
+            </div>
+            <div>
+                <p>Juin 2010</p>
+                <p>Diplôme d'études secondaires<br>École secondaire de Rivière-du-Loup</p>
+            </div>
+        </div>
+    </div>
+    <div id="competencesTechniques">
+        <strong>COMPÉTENCES TECHNIQUES EN INFORMATIQUE</strong>
+        <table id="tableCompetence">
+            <tr>
+                <th>Sujet</th>
+                <th>Compétence</th>
+            </tr>
+            <tr>
+                <td>Programmation</td>
+                <td>C#, PHP, Javascript</td>
+            </tr>
+            <tr>
+                <td>Systèmes d'exploitation</td>
+                <td>Windows, Linux (Debian), Windows Server</td>
+            </tr>
+            <tr>
+                <td>Bases de données</td>
+                <td>MySQL, NoSQL</td>
+            </tr>
+            <tr>
+                <td>Logiciels</td>
+                <td>Suite Office Microsoft</td>
+            </tr>
+            <tr>
+                <td>Introduction - Fondamentals</td>
+                <td>CISCO CCNA</td>
+            </tr>
+        </table>
+        <p style="margin-top:10px;">
+                <strong>SOMMAIRE DES COMPÉTENCES SOCIALES</strong>
+                <ul id="competences">
+                    <li>Sens de l'organisation</li>
+                    <li>Confortable avec le public</li>
+                    <li>Facilité d'approche</li>
+                    <li>Capacité d'analyse et bon jugement</li>
+                    <li>Ouvert d'esprit</li>
+                    <li>Débrouillard et fiable</li>
+                    <li>Autonome - Rigoureux</li>
+                    <li>Compétitif</li>
+                    <li>À l'aise dans les domaines de la technologie</li>
+                </ul><br>
+            </p>
+    </div>
+</div>
+
+EOT;
+
+include("template.php");
+
+
+
 ?>
