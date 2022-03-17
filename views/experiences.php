@@ -1,7 +1,4 @@
-<?php
 
-$pageTitle = "CURRICULUM VITAE";
-$pageContent = <<<EOT
 <strong>EXPERIENCES DE TRAVAIL</strong>
 <div id="experiences" style="margin-top:10px;">
     <div class="description">
@@ -110,13 +107,9 @@ $pageContent = <<<EOT
 <strong>ACTIVITÉS SOCIALES ET INTÉRÊTS</strong>
     <ul>
         <li>Guitare classique et piano</li>
-        <li>Informatique</li>
+        <li>Exercice physique</li>
+        <li>Lecture - Rester à jour sur l'industrie technologique</li>
         <li>Intérêts liés aux sciences</li>
     </ul>
 </div>
-EOT;
 
-include("../template.php");
-
-
-?>

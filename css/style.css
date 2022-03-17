@@ -28,7 +28,7 @@ nav ul {
   nav ul li .active {background-color: #008CBA;color:white !important;}
 
 /* body */
-
+body{font-family: Helvetica, sans-serif;}
 main{width:80%;margin:auto; margin-top:25px;}
 
 #title {
@@ -43,10 +43,12 @@ main{width:80%;margin:auto; margin-top:25px;}
 
 #competences{list-style-type: none;text-indent: -15px;}
 #competences > li:before {content: "- ";}
+#competencesTechniques{width:50%;}
 
 #formation p{width:50%;}
 #formation div{display:flex;}
 #tableCompetence, th, td{border: 1px solid black;padding:5px;margin-top:10px;}
+#tableCompetence td:nth-of-type(even){text-align:right;}
 #mainDiv{display:flex; justify-content:space-between;}
 
 footer div {width:50%; margin:auto;margin-top:15px;border-top:solid 1px;text-align:center;padding:15px;}

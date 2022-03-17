@@ -9,7 +9,7 @@ class view{
     {
         if($nom != null){
             ob_start(); //commencer à capturer la sortie
-            include('views/'.$_SESSION['lang'].'/'.$nom.'.php'); //exécute le fichier
+            include('views/'.$nom.'.php'); //exécute le fichier
             $this->view = ob_get_contents(); //obtenir le contenu du tampon
             ob_end_clean();
         }
@@ -21,7 +21,7 @@ class view{
         if($nom != null)
         {
             ob_start(); //commencer à capturer la sortie
-            include('views/'.$_SESSION['lang'].'/'.$nom.'.php'); //exécute le fichier
+            include('views/'.$nom.'.php'); //exécute le fichier
             $template = ob_get_contents(); //obtenir le contenu du tampon
             ob_end_clean();
             $this->view = str_replace('@pageContent', $this->view, $template);

@@ -20,3 +20,31 @@
 [14-Mar-2022 18:34:39 Europe/Berlin] PHP Warning:  Undefined variable $pageContent in C:\xampp\htdocs\cvExercice\views\template.php on line 27
 [14-Mar-2022 21:49:59 Europe/Berlin] PHP Warning:  include(../calls/config.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\views\template.php on line 2
 [14-Mar-2022 21:49:59 Europe/Berlin] PHP Warning:  include(): Failed opening '../calls/config.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\views\template.php on line 2
+[14-Mar-2022 23:23:21 Europe/Berlin] PHP Warning:  include(/views/template.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\index.php on line 92
+[14-Mar-2022 23:23:21 Europe/Berlin] PHP Warning:  include(): Failed opening '/views/template.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\index.php on line 92
+[14-Mar-2022 23:24:27 Europe/Berlin] PHP Warning:  include(../calls/config.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\views\template.php on line 3
+[14-Mar-2022 23:24:27 Europe/Berlin] PHP Warning:  include(): Failed opening '../calls/config.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\views\template.php on line 3
+[14-Mar-2022 23:24:36 Europe/Berlin] PHP Warning:  include(../calls/config.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\views\template.php on line 3
+[14-Mar-2022 23:24:36 Europe/Berlin] PHP Warning:  include(): Failed opening '../calls/config.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\views\template.php on line 3
+[14-Mar-2022 23:27:52 Europe/Berlin] PHP Warning:  include(../calls/config.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\views\template.php on line 2
+[14-Mar-2022 23:27:52 Europe/Berlin] PHP Warning:  include(): Failed opening '../calls/config.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\views\template.php on line 2
+[14-Mar-2022 23:28:59 Europe/Berlin] PHP Warning:  include(../calls/config.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\views\template.php on line 2
+[14-Mar-2022 23:28:59 Europe/Berlin] PHP Warning:  include(): Failed opening '../calls/config.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\views\template.php on line 2
+[14-Mar-2022 23:29:02 Europe/Berlin] PHP Warning:  include(../calls/config.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\views\template.php on line 2
+[14-Mar-2022 23:29:02 Europe/Berlin] PHP Warning:  include(): Failed opening '../calls/config.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\views\template.php on line 2
+[14-Mar-2022 23:29:03 Europe/Berlin] PHP Warning:  include(../calls/config.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\views\template.php on line 2
+[14-Mar-2022 23:29:03 Europe/Berlin] PHP Warning:  include(): Failed opening '../calls/config.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\views\template.php on line 2
+[15-Mar-2022 00:30:52 Europe/Berlin] PHP Warning:  include(views/template.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\cvExercice\libs\view.php on line 24
+[15-Mar-2022 00:30:52 Europe/Berlin] PHP Warning:  include(): Failed opening 'views/template.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\cvExercice\libs\view.php on line 24
+[15-Mar-2022 00:38:27 Europe/Berlin] PHP Warning:  Undefined variable $pageContent in C:\xampp\htdocs\cvExercice\views\template.php on line 27
+[15-Mar-2022 00:40:38 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "pageContent" in C:\xampp\htdocs\cvExercice\views\template.php:27
+Stack trace:
+#0 C:\xampp\htdocs\cvExercice\libs\view.php(24): include()
+#1 C:\xampp\htdocs\cvExercice\controller\controller.php(9): view->template('template')
+#2 C:\xampp\htdocs\cvExercice\index.php(19): controller::accueil()
+#3 {main}
+  thrown in C:\xampp\htdocs\cvExercice\views\template.php on line 27
+[15-Mar-2022 01:06:10 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string + string in C:\xampp\htdocs\cvExercice\index.php:18
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\cvExercice\index.php on line 18
